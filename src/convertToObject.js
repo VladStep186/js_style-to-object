@@ -19,18 +19,17 @@ function convertToObject(sourceString) {
 
   // return result;
 
-
-  const cssObject = sourceString
+  const styles = sourceString
     .split(';')
-    .filter(deleteSpace => deleteSpace.trim())
-    .map(style => style.split(':').map(part => part.trim()))
-    .reduce((styles, [property, value]) => {
-      styles[property] = value;
+    .filter((styleString) => styleString.trim())
+    .map((style) => style.split(':').map((part) => part.trim()))
+    .reduce((cssObject, [property, value]) => {
+      cssObject[property] = value;
 
-      return styles;
+      return cssObject;
     }, {});
 
-  return cssObject;
+  return styles;
 }
 
 module.exports = convertToObject;
